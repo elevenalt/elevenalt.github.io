@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HAPPY BIRHTFHAYYDYADYAYAYAY</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div id="header">
+      <h1 id="title">happy birthday mehar</h1>
+    </div>
+
+    <div id="overlay"></div>
+    <div id="popup">
+        <p>happy birthday mehar!!!!!! you're twenty already like WTF. I know I literally say this line every year but I can't believe it's already been 6 years since I met you - that's a long af time to know someone for!! I'm really glad I have you in my life though. you're the kindest and most understanding friend I have and we both have similar senses of humour and so onnnnnn. but like, talking to you about stuff on my mind has always made me feel better and pushed me to do things right so thank you for being you <3. you deserve all of the kindness and happiness in the world too, i really hope it all comes your way. you've got a big ass year ahead of you (uni WOOO) and you're in your twenties which are like your best years so go girlboss and do queen things.<br><br>
+
+            i know sometimes everything might feel like a mess but keep being you and doing you. in a world where most people really do not care, you're genuinely a gem amongst everyone else. keep being you and doing you, no matter what anyone else says or no matter what anyone else does :3. it's one of the reasons you're my bestie - you're you and I don't think I can encompass who you are and why I appreciate you in a single birthday wish!!<br><br>
+
+            it's weird to think about sometimes but despite all our moments of on-off talking we still manage to pick up our friendship at the same point. but I think the closest friends are the ones you can kinda do that with. i know our timezones are pretty fucked and life is getting busier but I appreciate the time you make to actually keep things up. and the effort and the lilo pics. it probably sounds weird but there's a lot of memories with you that I cherish!!! and I hope that we get to make more too :3<br><br>
+
+            i'm genuinely really proud of you because you've grown so much, and in such a short time too. like, maybe a year ago you would've died at taking a phone call or other stuff like that but you're way more confident with that sort of stuff. but it's really not just that, you seem like you know more of what you want and what you want to be. I don't know how to describe it because it's super subtle but you've grown a lot mehar and you should be proud of that too!!!<br><br>
+
+            I don't know where I'd be at now, but I think my life would've pivoted in a different direction if it weren't for you. It's weird to think about the impact one person has on your life.. but yeah!! You've been there for me in so many different moments, but also helped me realised things about myself and given me a bunch of great memories and new things to be interested about and watch and so on. I don't think I would be the same person without having met you, and I know it might not be the same for you but it is for me. I really do appreciate you though, and not just for the things you do but for the person you are :3<br><br>
+
+            anyway, i hope we get to make many more retarded memories together and I hope you get to make many more retarded memories in general too, whether its by yourself or with other people!! this year will definitely be a good one 1000000% so enjoy it!!!!! and enjoy your birthday and birthday day and wishes and YA. if I lived in london I'd get you a cake but I don't so um. and your parents would be like who tf is this gifting you cakes and then they'd start a worldwide hunt for whoever that david guy is.<br><br>
+
+            HAPPY 20TH BIRTHDAY MEHAR!!!!</p>
+
+        <img id="gif" src="assets/gif1.gif">
+        <div id="closebutt">
+            <h2>close</h2>
+        </div>
+    </div>
+
+    <div id="lilocat">
+        <img src="assets/catmoding.png" id="catmoder" style="width: 100%; height: 100%; filter: drop-shadow(8px 8px 4px #000000);">
+    </div>
+
+    <div id="clicktext">
+        <p id="textclick">(click lilo :3)</p>
+        <p id="fadedfaded">you can <span class="ominoustext">unexplode</span> him tho...</p>
+        <div id="unexplodebutt">
+            <h2>big ass unexplode button</h2>
+        </div>
+    </div>
+
+    <script>
+      const title = document.getElementById('title')
+      const gif = document.getElementById('gif');
+      let explodeswitch = false;
+      let unexplodeswitch = false;
+      let spawnswitch = false;
+      let wishswitch = false;
+
+      async function gifchange() {
+          while (true) {
+              let num = Math.floor(Math.random() * 15);
+              gif.src = "assets/gif" + (num + 1) + ".gif";
+              await new Promise(resolve => setTimeout(resolve, 2000));
+          }
+      }
+
+      async function titlegen() {
+        for (let i = 0; i <= 75; i++) {
+          let num = Math.floor(Math.random() * 20);
+
+          if (num > 17) {
+              title.innerHTML += "1";
+          }
+          else {
+              title.innerHTML += "!";
+          }
+          await new Promise(resolve => setTimeout(resolve, 1000/(i + 1)));
+        }
+      }
+
+      function lilofade() {
+          $("#catmoder").css("display","none");
+          $("#catmoder").attr("src", "assets/catmoded.png");
+          $("#catmoder").css("filter", "grayscale(1) drop-shadow(8px 8px 4px #000000) ");
+          $("#catmoder").fadeIn(400);
+          setTimeout(function() {
+              $("#fadedfaded").fadeIn(800);
+          }, 2000);
+          setTimeout(function() {
+              $("#unexplodebutt").fadeIn(1000);
+          }, 3000);
+      }
+
+      $(function() {
+          $("#catmoder").on("click",
+              function() {
+                  if (!explodeswitch) {
+                      $("#lilocat").css("animation", "none");
+                      $(this).attr("src", "assets/boomies.gif");
+                      $("#textclick").html("you blew him up. wow.");
+                      $(this).css("cursor", "not-allowed");
+                      setTimeout(lilofade, 1400);
+                      explodeswitch = true;
+                  }
+
+                  if (wishswitch) {
+                      $("#overlay").fadeIn(500);
+                      $("#popup").fadeIn(500);
+                  }
+              }
+          );
+      });
+
+      $(function() {
+          $("#closebutt").on("click",
+              function() {
+                  $("#overlay").fadeOut(500);
+                  $("#popup").fadeOut(500);
+              });
+      });
+
+      $(function() {
+          $("#unexplodebutt").on("click",
+            async function() {
+                if (!unexplodeswitch) {
+                    $("#catmoder").css("animation", "rotation 0.2s infinite linear");
+                    $("#textclick").css("display", "none");
+                    $("#textclick").html(":3");
+                    $("#fadedfaded").fadeOut(500);
+                    $("#unexplodebutt").fadeOut(250);
+                    unexplodeswitch = true;
+
+                    for (let i = 0; i <= 50; i++) {
+                        $("#catmoder").css("filter", "brightness(" + (100 + (i * 10)) + "%)");
+                        await new Promise(resolve => setTimeout(resolve, 100 / (i + 1)));
+                    }
+
+                    $("#catmoder").fadeOut(1000);
+                    $("#catmoder").attr("src", "assets/birthdaymoding.png");
+                    setTimeout(function() {
+                        $("#lilocat").css("margin-top", "4%");
+                        $("#catmoder").fadeIn(1000);
+                        $("#textclick").fadeIn(1500);
+x                    }, 2000);
+                    setTimeout(function() {
+                        $("#catmoder").css("filter", "drop-shadow(8px 8px 4px #000000)");
+                        $("#catmoder").css("animation", "shake 0.5s");
+                        $("#catmoder").css("animation-iteration-count", "infinite");
+                        spawnswitch = true;
+                    }, 3000);
+                    setTimeout(function() {
+                        $("#catmoder").css("animation", "none");
+                        $("#catmoder").attr("src", "assets/cakemoding.png");
+                    }, 3500);
+                    setTimeout(function() {
+                        $("#overlay").fadeIn(500);
+                        $("#popup").fadeIn(500);
+                        $("#catmoder").css("cursor", "grab")
+                        wishswitch = true;
+                    }, 4500);
+                }
+            });
+      });
+
+      titlegen();
+      gifchange();
+    </script>
+
+    <!--- actual text box can have birthday wish and then an arrow to top 10 mehar moments etc --->
+</body>
+</html>
